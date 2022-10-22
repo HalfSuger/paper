@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>门诊系统</title>
+        <link type="text/css" href="{{ url_for('static', filename='css/nurse.css') }}" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- https://fontawesome.com/v5/icons/times?s=solid -->
+    <script src="https://kit.fontawesome.com/0c1f4f1756.js" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/default.js') }}"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+    <!--  popper.min.js 用于弹窗、提示、下拉菜单 -->
+    <script src="https://cdn.staticfile.org/popper.js/2.9.3/umd/popper.min.js"></script>
+    <!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        {#            sidebar为可隐藏的侧边导航栏#}
+        <div class="sidebar">
+            <div class="bg_shadow"></div>
+            <div class="sidebar_inner">
+                <div class="close">
+                    <i class="fas fa-times"></i>
+                </div>
+                <div class="profile_info">
+                    <div class="profile_img">
+                        <img src="../../static/img/1.jpg" alt="">
+                    </div>
+                    <div class="profile_data">
+                        <p class="name">{{ results1[1] }}护士</p>
+                        <span>欢迎您！</span>
+                    </div>
+                </div>
+
+{#                普通的显示数据的时候，ul就是项目列表，li就是列表项。可以用来显示数据#}
+                <ul class="siderbar_menu">
+                    <li class="active">
+                        <a href="#">
+                            <div class="icon">
+                                <i class="fa-solid fa-clipboard-list"></i>
+                            </div>
+                            <div class="title">挂号</div>
+                        </a>
+                    </li>
+                    <li>
+                            <a href="/nursearch">
+                                <div class="icon">
+                                    <i class="fa-solid fa-folder-tree"></i>
+                                </div>
+                                <div class="title" >查询</div>
+                            </a>
+                    </li>
+                    <li>
+                            <a href="/remainbed">
+                                <div class="icon">
+                                    <i class="fa-solid fa-clipboard-list"></i>
+                                </div>
+                                <div class="title">住院办理</div>
+
+                            </a>
+                    </li>
+                </ul>
+                <div class="logout_btn">
+                    <a href="/">退出登陆</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="main_container">
+            <div class="navbar">
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="logo">
+                    <a href="#">xx医院</a>
+                </div>
+            </div>
+            <div class="content">
+                <div class="bingli">
+                    <h1 align="center">病人信息录入</h1>
+                    <br>
+                    <br>
+                    <div align="center"><h5>一次挂号仅可提交一份病历、药单和检查单</h5></div>
+                    <div align="center"><h5>如需多次提交可再次挂号,再次挂号只需输入卡号</h5></div>
+                    <br>
+                    <div class="container mt-3">
+                        <form method="get" action="/register">
+                            <div class="mb-3" align="center">
+                                <label>科室：</textarea><input type="text"  name="department" value={{ results4 }}></label>
+                            </div>
+                            <div class="form-check" align="center">
+                                <input type="radio" class="form-check-input" id="radio1" name="type" value="1" checked>专家门诊
+                                <label class="form-check-label" for="radio1"></label>
+                            </div>
+                            <div class="form-check" align="center">
+                                <input type="radio" class="form-check-input" id="radio2" name="type" value="2">普通门诊
+                                <label class="form-check-label" for="radio2"></label>
+                            </div>
+                            <div class="mb-3 mt-3" align="center">
+                                <label>姓名：</textarea><input type="text"  name="p_name" value=""></label>
+                            </div>
+                            <div align="center">
+                                <label>性别：
+                                <select name="p_sex"><option>男</option><option>女</option></select>
+                                </label>
+                            </div>
+                            <br>
+                            <div class="mb-3" align="center">
+                                <label>卡号：</textarea><input type="text"  name="p_name" value=""></label>
+                            </div>
+                            <br>
+                            <div align="center" style="width: auto">
+                                <label> 请选择医生：
+                                <select name="selectdoctor">
+                                    {% for i in results3 %}
+                                    <option>
+                                        {{ results2[i-1][0]}}
+                                        {{ results2[i-1][1] }}
+                                    </option>
+                                    {% endfor %}
+                                </select>
+                                </label>
+                            </div>
+                            <br>
+                            <div align="center"><input required type="submit" style="width:80px;height:50px;font-size: 15px" value="挂号"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

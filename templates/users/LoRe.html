@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登陆注册</title>
+    <!-- 引入css 和图标图的css  引入才可以生效 -->
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="../../static/iconfont/iconfont.css">
+
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <!-- 注册 -->
+            <form action="/useradd" id="useradd" method="get" enctype='multipart/form-data'>
+                <h1>用户注册</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="iconfont icon-qq"></i></a>
+                    <a href="#" class="social"><i class="iconfont icon-weixin"></i></a>
+                    <a href="#" class="social"><i class="iconfont icon-weibo-copy"></i></a>
+                    <a href="#" class="social"><i class="iconfont icon-github"></i></a>
+                </div>
+{#                <span>您可以选择以上几种方式注册一个您的账户!</span>#}
+                <span>请您选择注册身份！<select name="downlist1" id="downlist1"><option value=1>医师</option><option value=2>护士</option><option value=3>管理员</option></select></span>
+
+{#                <div class="col-5">#}
+{#                    <label for="roleAdmin">管理员 </label>#}
+{#                    <input id="roleAdmin" type="radio" class="form-check-input">#}
+{#                    <label for="roleDoctor">医生 </label>#}
+{#                    <input id="roleDoctor" type="radio" class="form-check-input">#}
+{#                    <label for="roleNurse">护士 </label>#}
+{#                    <input id="roleNurse" type="radio" class="form-check-input">#}
+{#                </div>#}
+                <label>
+                    <input type="text" name="username1" id="un1" placeholder="用户名">
+                </label>
+                <label>
+                    <input type="password" name='password1' id="pw1" placeholder="密码">
+                </label>
+                <button name="send_code">发送验证码</button>
+                <label>
+                    <input type="email" placeholder="验证码">
+                </label>
+{#                <input type="file" name="file" style="margin-top:20px;"/>#}
+{#                <input type="submit" value="上传" class="button-new" style="margin-top:15px;"/>#}
+                <input type="file" id="img_upload">
+                <button class="user" id="userAdd">注册</button>
+            </form>
+            <div class="flash-message">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+                {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+        <div class="form-container sing-in-container">
+            <!-- 登陆 -->
+            <form action="/login" method="get">
+                <h1>用户登陆</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="iconfont icon-qq"></i></a>
+                    <a href="#" class="social"><i class="iconfont icon-weixin"></i></a>
+                    <a href="#" class="social"><i class="iconfont icon-weibo-copy"></i></a>
+                    <a href="#" class="social"><i class="iconfont icon-github"></i></a>
+                </div>
+{#                <span>您可以选择以上几种方式登陆您的账户!</span>#}
+                <span>请您选择登陆身份！<select name="downlist"><option value=1>医师</option><option value=2>护士</option><option value=3>管理员</option></select></span>
+                <label>
+                    <input type="text" name="doctor_id" placeholder="用户名">
+                </label>
+                <label>
+                    <input type="password" name="password" placeholder="密码" value="">
+                </label>
+                <a href="#">忘记密码?</a>
+                <button>登陆</button>
+
+            </form>
+        </div>
+        <!-- 侧边栏内容 -->
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-pannel overlay-left">
+                    <h1>已有账号?</h1>
+                    <p>点我登陆</p>
+                    <button class="ghost" id="signIn">登陆</button>
+                </div>
+                <div class="overlay-pannel overlay-right">
+                    <h1>没有帐号？</h1>
+                    <p>点击去注册账号吧。</p>
+                    <button class="ghost" id="signUp">注册</button>
+                </div>
+            </div>
+        </div>
+        <!-- 删除事件的 模态框 -->
+{#        <div class="modal" id="myModal">#}
+{#            <div class="modal-dialog">#}
+{#                <div class="modal-content">#}
+{#                <!-- 模态框头部 -->#}
+{#                    <div class="modal-header">#}
+{#                        <h4 class="modal-title">信息</h4>#}
+{#                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>#}
+{#                    </div>#}
+{##}
+{#                <!-- 模态框内容 -->#}
+{#                    <div class="modal-body" id="modal-body">#}
+{#                    操作结果#}
+{#                    </div>#}
+{##}
+{#                <!-- 模态框底部 -->#}
+{#                    <div class="modal-footer">#}
+{#                        <a href="LoRe.html"><button type="button" class="btn btn-primary"#}
+{#                            data-bs-dismiss="modal">确定</button></a>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+    </div>
+</body>
+    <script src="../static/js/LoRe.js"></script>
+</html>

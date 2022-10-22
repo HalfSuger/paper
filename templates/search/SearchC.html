@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>门诊系统</title>
+    <link type="text/css" href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- https://fontawesome.com/v5/icons/times?s=solid -->
+    <script src="https://kit.fontawesome.com/0c1f4f1756.js" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/default.js') }}"></script>
+{#    <script>#}
+{#        window.alert("提交成功")#}
+{#    </script>#}
+</head>
+<body>
+    <div class="wrapper">
+        <div class="sidebar">
+            <div class="bg_shadow"></div>
+                <div class="sidebar_inner">
+                    <div class="close">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <div class="profile_info">
+                        <div class="profile_img">
+                            <img src="../../static/img/1.jpg" alt="">
+                        </div>
+                        <div class="profile_data">
+                            <p class="name">{{ results1[0] }}</p>
+                            <span>欢迎您！</span>
+                        </div>
+                    </div>
+
+                    <ul class="siderbar_menu">
+                        <li class="active">
+                            <a href="/manager">
+                                <div class="icon">
+                                    <i class="fa-solid fa-folder-tree"></i>
+                                </div>
+                                <div class="title">查询</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="icon">
+                                    <i class="fa-solid fa-capsules"></i>
+                                </div>
+                                <div class="title">修改信息</div>
+                                <div class="arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </a>
+
+                            <ul class="accordion">
+                                <li><a href="/editdoctor">修改医生</a></li>
+                                <li><a href="/editornurse">修改护士</a></li>
+                                <li><a href="editpatient">修改病人</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="logout_btn">
+                        <a href="/">退出登陆</a>
+                    </div>
+                </div>
+        </div>
+
+        <div class="main_container">
+{#            上栏#}
+            <div class="navbar">
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="logo">
+                    <a href="#">xx医院</a>
+                </div>
+            </div>
+            <div class="content">
+                <div class="yaodan" align="center">
+                    <h1 style="margin: 0 auto" align="center">检查单</h1>
+                    <br>
+                    <table align="center" style="font-size:18px;margin:0 auto">
+                        <tr>
+                            <td>患者：</td>
+                            <td width="250px" style="text-align: left">{{ results3[1] }}</td>
+                            <td>性别：</td>
+                            <td>{{ results3[2] }}</td>
+                        </tr>
+                        <tr>
+                           <td>卡号：</td>
+                           <td width="250px" style="text-align: left">{{ results3[0] }}</td>
+                           <td>检查单：</td>
+                           <td>{{ results5 }}</td>
+                       </tr>
+                        <tr>
+                            <td>医生：</td>
+                            <td width="250px" style="text-align: left">{{ results2[0] }}</td>
+                            <td>科室：</td>
+                            <td>{{ results2[1]}}</td>
+                        </tr>
+                    </table>
+
+                    <table align="center" border="1" style="margin-top: 20px;width: 500px">
+{#                        表头#}
+                        <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>检查名</th>
+                            <th>编号</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {% for i in results6 %}
+                            <tr>
+                                <td>{{ i }}</td>
+                                <td>{{ results7[i-1] }}</td>
+                                <td>{{ results8[i-1] }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <br>
+                        <form align="center" method="get" action="/delc">
+                            <input name='dc_id' type="text" style="display: none" value="{{ results5 }}" >
+                            <input align="center" type="submit" style="width:80px;height:40px" value="删除" >
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

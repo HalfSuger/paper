@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>门诊系统</title>
+    <link type="text/css" href="{{ url_for('static', filename='css/nurse.css') }}" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- https://fontawesome.com/v5/icons/times?s=solid -->
+    <script src="https://kit.fontawesome.com/0c1f4f1756.js" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/default.js') }}"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+    <!--  popper.min.js 用于弹窗、提示、下拉菜单 -->
+    <script src="https://cdn.staticfile.org/popper.js/2.9.3/umd/popper.min.js"></script>
+    <!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.min.js"></script>
+{#    <script>#}
+{#        window.alert("提交成功")#}
+{#    </script>#}
+</head>
+<body>
+    <div class="wrapper">
+        <div class="sidebar">
+            <div class="bg_shadow"></div>
+                <div class="sidebar_inner">
+                    <div class="close">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <div class="profile_info">
+                        <div class="profile_img">
+                            <img src="../../static/img/1.jpg" alt="">
+                        </div>
+                        <div class="profile_data">
+                            <p class="name">{{ results1[0] }}</p>
+                            <span>欢迎您！</span>
+                        </div>
+                    </div>
+
+                    <ul class="siderbar_menu">
+                        <li class="active">
+                            <a href="#">
+                                <div class="icon">
+                                    <i class="fa-solid fa-folder-tree"></i>
+                                </div>
+                                <div class="title" >查询</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/remainbed">
+                                <div class="icon">
+                                    <i class="fa-solid fa-clipboard-list"></i>
+                                </div>
+                                <div class="title">住院办理</div>
+
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="register_btn">
+                        <a href="/register1">挂号</a>
+                    </div>
+                    <div class="logout_btn">
+                        <a href="/">退出登陆</a>
+                    </div>
+                </div>
+        </div>
+
+        <div class="main_container">
+{#            上栏#}
+            <div class="navbar">
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="logo">
+                    <a href="#">xx医院</a>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="bingli">
+                    <h1 align="center" style="margin: 0 auto;margin-top: 40px">您可以查询以下内容</h1>
+                    <h2 align="center" style="margin: 0 auto;margin-top: 70px">查询病历</h2>
+                    <br>
+                    <form method="get" action="/searchb">
+                        <div align="center"><label style="font-size:15px">病历号：<input type="text" placeholder="请输入病历号" name="blist_id" style="font-size: 15px" value=""></label></div>
+                        <br>
+                        <div align="center"><button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">查询</button></div>
+                    </form>
+                    <br>
+                    <hr>
+                    <h2 align="center" style="margin: 0 auto;margin-top: 100px">查询药单</h2>
+                    <br>
+                    <form method="get" action="/searchm">
+{#                        <div align="center"><label style="font-size:15px">药单号：<input type="text" placeholder="请输入药单号" name="mlist_id" style="font-size: 15px" value=""><input required type="submit" style="width:40px;height:25px;font-size: 15px" value="查询"> </label></div>#}
+                        <div align="center"><label style="font-size:15px">药单号：<input type="text" placeholder="请输入药单号" name="mlist_id" style="font-size: 15px" value=""></label></div>
+                        <br>
+                        <div align="center"><button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">查询</button></div>
+                    </form>
+                    <br>
+                    <hr>
+                    <h2 align="center" style="margin: 0 auto;margin-top: 100px">查询检查单</h2>
+                    <br>
+                    <form method="get" action="/searchc">
+                        <div align="center"><label style="font-size:15px">检查单号：<input type="text" placeholder="请输入检查单号" name="clist_id" style="font-size: 15px" value=""></label></div>
+                        <br>
+                        <div align="center"><button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">查询</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

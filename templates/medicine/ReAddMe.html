@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>药品添加成功</title>
+    <link type="text/css" href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- https://fontawesome.com/v5/icons/times?s=solid -->
+    <script src="https://kit.fontawesome.com/0c1f4f1756.js" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/default.js') }}"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="sidebar">
+            <div class="bg_shadow"></div>
+                <div class="sidebar_inner">
+                    <div class="close">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <div class="profile_info">
+                        <div class="profile_img">
+                            <img src="../../static/img/1.jpg" alt="">
+                        </div>
+                        <div class="profile_data">
+                            <p class="name">{{ results1[1] }}医生</p>
+                            <span>欢迎您！</span>
+                        </div>
+                    </div>
+
+                    <ul class="siderbar_menu">
+                        <li class="active">
+                            <a href="#">
+                                <div class="icon">
+                                    <i class="fa-solid fa-clipboard-list"></i>
+                                </div>
+                                <div class="title">病历单</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="icon">
+                                    <i class="fa-solid fa-capsules"></i>
+                                </div>
+                                <div class="title">开药</div>
+                                <div class="arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </a>
+
+                            <ul class="accordion">
+                                <li><a href="/tmedicine">添加药品</a></li>
+                                <li><a href="/medicinelist">生成药单</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <div class="icon">
+                                    <i class="fa-solid fa-stethoscope"></i>
+                                </div>
+                                <div class="title">检查</div>
+                                <div class="arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </a>
+                            <ul class="accordion">
+                                <li><a href="/tcheck" >添加检查</a></li>
+                                <li><a href="/checklist" >生成检查单</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="register_btn">
+                        <a href="/register1">挂号</a>
+                    </div>
+                    <div class="logout_btn">
+                        <a href="/">退出登陆</a>
+                    </div>
+                </div>
+        </div>
+
+        <div class="main_container">
+{#            上栏#}
+            <div class="navbar">
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="logo">
+                    <a href="#">xx医院</a>
+                </div>
+            </div>
+
+                <div class="content">
+                    <div class="bingli">
+                        <br>
+                        <br>
+                        <br>
+                        <h1 align="center">药品已添加</h1>
+                        <br>
+                        <br>
+                        <div align="center"><a href="/tmedicine" style="font-size: 18px">继续添加</a></div>
+                        <br>
+                        <div align="center"><a href="/medicinelist" style="font-size: 18px">生成药单</a></div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</body>
+
+</html>

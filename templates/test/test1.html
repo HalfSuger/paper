@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模态框</title>
+</head>
+<body>
+<h2>创建模态框</h2>
+<button class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">模态框</button><!--data-target="#myModal
+"执行弹窗的div的id-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">弹窗</h4><!--弹窗的标题-->
+            </div>
+            <div class="modal-body"><!--弹窗的内容-->
+                <p>弹窗的内容</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button><!--弹窗的尾部-->
+                <button type="button" class="btn btn-primary">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- https://fontawesome.com/v5/icons/times?s=solid -->
+    <script src="https://kit.fontawesome.com/0c1f4f1756.js" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/default.js') }}"></script>
+    <!-- 新 Bootstrap5 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+    <!--  popper.min.js 用于弹窗、提示、下拉菜单 -->
+    <script src="https://cdn.staticfile.org/popper.js/2.9.3/umd/popper.min.js"></script>
+    <!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.min.js"></script>
+</html>
